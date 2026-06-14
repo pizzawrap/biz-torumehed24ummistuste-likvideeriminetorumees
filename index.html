@@ -1,247 +1,178 @@
--html
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Torumehed24 | Plumber and General Contractor</title>
+    <title>torumehed24 | Ummistuste likvideerimine, Torumees, Torutööd, Toruabi</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-color: #11653b;
-            --secondary-color: #f8f9fa;
-            --text-color: #343a40;
-            --accent-color: #ffc107;
-            --font-family: 'DM Sans', sans-serif;
+            --primary-color: #3498db;
+            --secondary-color: #e74c3c;
+            --background-color: #ecf0f1;
         }
-        body {
+        * {
+            box-sizing: border-box;
             margin: 0;
-            font-family: var(--font-family);
-            background: linear-gradient(120deg, rgba(255, 255, 255, .9), rgba(255, 255, 255, 1));
+            padding: 0;
         }
-        .navbar {
+        body, html {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--background-color);
+            color: #333;
+        }
+        .sticky-nav {
+            position: -webkit-sticky;
             position: sticky;
             top: 0;
             width: 100%;
             background-color: var(--primary-color);
-            box-shadow: 0 2px 4px rgba(0,0,0,.1);
+            padding: 1rem 0;
+            z-index: 1000;
+        }
+        .nav-list {
             display: flex;
-            justify-content: space-between;
+            justify-content: space-around;
             align-items: center;
-            padding: .5rem 1rem;
+            list-style-type: none;
         }
-        .navbar a {
-            color: white;
+        .nav-item a {
+            color: #fff;
             text-decoration: none;
-            font-size: 1.2rem;
-            transition: all .3s ease;
+            font-weight: bold;
+            padding: 0.5rem;
+            transition: all 0.3s ease-in-out;
         }
-        .navbar a:hover {
-            opacity: .8;
+        .nav-item a:hover {
+            color: var(--secondary-color);
         }
-        .hero {
-            height: 70vh;
+        .hero-section {
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
-            background: linear-gradient(120deg, rgba(30, 46, 59,.8), rgba(51, 75, 96, .8)), url('https://img.freepik.com/free-vector/plumber-contractor-building-house-idea-abstract-concept_23-2148839740.jpg?w=1480&t=st=1674924841~exp=1674925441~hmac=d3b6a8b58c5f21e5a7ecbce3d08ff273eef22181d4cdd7dbbd2a1e26031a2bc9') no-repeat center center/cover;
-            color: white;
-            text-align: center;
+            height: 100vh;
+            background-image: url('https://via.placeholder.com/1920x500?text=Torumehed+Hero');
+            background-size: cover;
+            color: #fff;
+            text-shadow: 2px 2px rgba(0,0,0,0.5);
         }
-        .hero h1 {
+        .hero-title {
             font-size: 3rem;
             margin-bottom: 1rem;
         }
-        .hero p {
-            font-size: 1.5rem;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-        .container {
-            padding: 2rem;
-        }
-        .about-section {
-            display: flex;
-            align-items: center;
-        }
-        .about-image {
-            width: 50%;
-            height: 300px;
-            overflow: hidden;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0,0,0,.1);
-        }
-        .about-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        .about-text {
-            flex-grow: 1;
-            padding-left: 2rem;
+        .hero-description {
             font-size: 1.2rem;
-            line-height: 1.8;
-        }
-        .services-section, .testimonials-section, .contact-section {
-            margin-top: 3rem;
-        }
-        .service-item {
-            background-color: #fff;
-            box-shadow: 0 4px 8px rgba(0,0,0,.1);
-            border-radius: 8px;
-            padding: 1.5rem;
-            margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
-        }
-        .service-icon {
-            min-width: 60px;
-            max-width: 60px;
-            height: auto;
-            margin-right: 1rem;
-        }
-        .service-text {
-            flex-grow: 1;
-        }
-        .testimonial-card {
-            background-color: #fff;
-            box-shadow: 0 4px 8px rgba(0,0,0,.1);
-            border-radius: 8px;
-            padding: 1rem;
-            margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
-        }
-        .testimonial-text {
-            flex-grow: 1;
-            font-size: 1.2rem;
-            line-height: 1.8;
-            margin-right: 1rem;
-        }
-        .testimonial-image {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            object-fit: cover;
-        }
-        .contact-section {
-            background-color: var(--primary-color);
-            color: white;
-        }
-        .contact-content {
-            padding: 2rem 1rem;
+            max-width: 80%;
             text-align: center;
         }
-        .address, .phone {
+        .about-section, .services-section, .testimonials-section, .contact-section {
+            padding: 2rem;
+            background-color: #fff;
+            margin-top: -50px; /* Offset from hero section padding */
+        }
+        .service-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+            border-bottom: 1px solid #f3f3f3;
+        }
+        .service-icon {
+            width: 60px;
+            height: 60px;
+            margin-right: 1rem;
+        }
+        .contact-info {
+            font-size: 1.2rem;
+            margin-top: 1rem;
+        }
+        .star-rating {
+            display: inline-block;
             font-size: 1.5rem;
+        }
+        .testimonial {
+            border-left: 4px solid var(--primary-color);
+            padding-left: 1rem;
             margin-bottom: 1rem;
+            position: relative;
         }
-        .form-section input, .form-section textarea {
-            width: calc(100% - 2rem);
-            padding: .8rem;
-            border: none;
-            border-radius: 4px;
-            margin-bottom: 1rem;
-        }
-        .form-section button {
-            background-color: var(--accent-color);
-            color: white;
-            border: none;
-            border-radius: 4px;
-            padding: .8rem 2rem;
-            cursor: pointer;
-        }
-        .form-section button:hover {
-            opacity: .9;
+        @media (max-width: 768px) {
+            .nav-list {
+                flex-direction: column;
+                align-items: center;
+            }
+            .hero-title, .hero-description {
+                font-size: 2rem; padding: 0.5rem;
+            }
         }
     </style>
 </head>
 <body>
-    <nav class="navbar">
-        <a href="#hero">Home</a>
-        <a href="#about">About Us</a>
-        <a href="#services">Services</a>
-        <a href="#testimonials">Testimonials</a>
-        <a href="#contact">Contact Us</a>
-    </nav>
-    <section class="hero" id="hero">
-        <div>
-            <h1>Welcome to Torumehed24</h1>
-            <p>Your Partner in Plumbing and General Construction</p>
-        </div>
-    </section>
-    <section class="container about-section" id="about">
-        <div class="row">
-            <div class="col-6 about-image">
-                <img src="https://res.cloudinary.com/djxw5b08d/image/upload/v1674925336/plumber-contractor-house-building-project-plan-blue-vintage-background_yh0y7v.jpg" alt="Plumber and General Contractor">
-            </div>
-            <div class="col-6 about-text">
-                <h2>About Us</h2>
-                <p>Torumehed24 is a family-owned company with over 15 years of experience in plumbing and construction. Our team of highly skilled professionals is dedicated to providing top-notch service that exceeds your expectations.</p>
-            </div>
-        </div>
-    </section>
-    <section class="container services-section" id="services">
-        <h2>Our Services</h2>
-        <div class="row">
-            <div class="col-4 service-item">
-                <img src="https://res.cloudinary.com/djxw5b08d/image/upload/v1674925354/plumbing-icon-sleek-and-modern-elements_1_hnvvfn.png" alt="Plumbing Repair">
-                <div class="service-text">
-                    <h3>Plumbing Repair</h3>
-                    <p>We handle residential and commercial plumbing needs, from minor repairs to complex installations.</p>
-                </div>
-            </div>
-            <div class="col-4 service-item">
-                <img src="https://res.cloudinary.com/djxw5b08d/image/upload/v1674925353/concrete-building-materials_1_w7tqgg.png" alt="General Construction">
-                <div class="service-text">
-                    <h3>General Construction</h3>
-                    <p>We offer a wide range of construction services including residential and commercial building projects.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-    <section class="container testimonials-section" id="testimonials">
-        <h2>Testimonials</h2>
-        <div class="row">
-            <div class="col-6 testimonial-card">
-                <img src="https://res.cloudinary.com/djxw5b08d/image/upload/v1674925360/man-in-white-jacket-avatar_1_gq5z3r.png" alt="Testimonial 1" class="testimonial-image">
-                <div class="testimonial-text">
-                    <p>Very good service. Professional, efficient and good attitude. I’m very satisfied.</p>
-                    <div style="text-align:right;">- Tingting Jia</div>
-                </div>
-            </div>
-            <div class="col-6 testimonial-card">
-                <img src="https://res.cloudinary.com/djxw5b08d/image/upload/v1674925361/guy-in-white-shirt-avatar_1_mgdxpe.png" alt="Testimonial 2" class="testimonial-image">
-                <div class="testimonial-text">
-                    <p>I highly recommend him! I respect such professionals!!!</p>
-                    <div style="text-align:right;">- Pavel Po</div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <section class="footer contact-section" id="contact">
-        <div class="container contact-content">
-            <h2>Contact Us</h2>
-            <p>Located at Astangu 28-2, 13519 Tallinn, Estonia</p>
-            <p>Call us: +372 5344 5533</p>
-        </div>
-    </section>
-    <script>
-        window.addEventListener('scroll', function() {
-            const sections = document.querySelectorAll('.container');
-            sections.forEach(section => {
-                if (window.scrollY > section.offsetTop - window.innerHeight / 2) {
-                    section.classList.add('in-view')
-                }
-            })
-        });
-        const navbar = document.querySelector('.navbar');
-        window.onscroll = () => { 
-            if(document.documentElement.scrollTop > 10) {  
-                navbar.style.boxShadow = "none";   
-            } else {  
-                navbar.style.boxShadow = "0 2px 4px rgba(0,0,0,.1)";   
-            }
-        };
-    </script>
+    
+<div class="sticky-nav">
+    <ul class="nav-list">
+        <li class="nav-item"><a href="#home">Home</a></li>
+        <li class="nav-item"><a href="#services">Services</a></li>
+        <li class="nav-item"><a href="#testimonials">Testimonials</a></li>
+        <li class="nav-item"><a href="#contact">Contact</a></li>
+    </ul>
+</div>
+
+<main>
+
+<div id="home" class="hero-section">
+    <h1 class="hero-title">Torumehed 24</h1>
+    <p class="hero-description">Ummistuste Likvideerimine, Torumees, Torutööd, Toruabi</p>
+</div>
+
+<div id="services" class="services-section">
+    <h2>Our Services</h2>
+    <ul class="service-list">
+        <li class="service-item"><img src="https://via.placeholder.com/60x60?text=Plumbing" alt="Plumbing">Pipe Installation & Repair</li>
+        <li class="service-item"><img src="https://via.placeholder.com/60x60?text=Cleaning" alt="Cleaning">Duct Cleaning</li>
+        <li class="service-item"><img src="https://via.placeholder.com/60x60?text=Repairs" alt="Repairs">Fixes & Repairs</li>
+    </ul>
+</div>
+
+<div id="testimonials" class="testimonials-section">
+    <h2>Testimonials</h2>
+    <div class="testimonial">
+        <p>"Very good service. Professional, efficient and good attitude. I’m very satisfied."</p>
+        <small>- Tingting Jia</small>
+    </div>
+    <div class="testimonial">
+        <p>"They arrived and did the job quickly. I recommend them to everyone!!"</p>
+        <small>- Konstantin Arretos</small>
+    </div>
+</div>
+
+<div id="contact" class="contact-section">
+    <h2>Contact Us</h2>
+    <p><span class="star-rating">★★★★★ (5)</span></p>
+    <address class="contact-info">
+        Astangu 28-2, 13519 Tallinn, Estonia<br>
+        Phone: +372 5344 5533
+    </address>
+</div>
+
+</main>
+
+<footer style="background-color: #fff; text-align: center; padding: 1rem 0;">
+    <p>&copy; 2023 Torumehed 24. All rights reserved.</p>
+</footer>
+
+<script>
+const smoothScroll = el => {
+    const toPosition = document.querySelector(el.getAttribute('href')).offsetTop;
+    window.scrollTo({
+        top: toPosition,
+        behavior: 'smooth'
+    });
+};
+document.querySelectorAll('.nav-item a').forEach(anchor => anchor.addEventListener('click', smoothScroll));
+</script>
+
 </body>
 </html>
