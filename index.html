@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Torumehed24 - Ummistuste likvideerimine</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #3A4659;
+            --secondary-color: #D87D4A;
+            --accent-color: #FFC107;
+            --text-color: #ffffff;
+            --bg-color: #f9f9f9;
+            --font-primary: 'Roboto', sans-serif;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: var(--font-primary);
+        }
+        body {
+            background-color: var(--bg-color);
+            color: var(--primary-color);
+            line-height: 1.6;
+        }
+        a, button {
+            text-decoration: none;
+            cursor: pointer;
+        }
+        header {
+            position: sticky;
+            top: 0;
+            width: 100%;
+            background-color: var(--bg-color);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            z-index: 1000;
+        }
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+        nav a, button {
+            padding: 0.5rem 1rem;
+            background-color: transparent;
+            border: 2px solid var(--secondary-color);
+            color: var(--primary-color);
+            font-weight: 700;
+            transition: all 0.3s ease;
+            border-radius: 4px;
+        }
+        nav a:hover, button:hover {
+            background-color: var(--secondary-color);
+            color: var(--text-color);
+        }
+        .hero-section {
+            position: relative;
+            width: 100%;
+            height: calc(100vh - 65px);
+            background-image: linear-gradient(to bottom right, rgba(var(--primary-color), 0.8), rgba(var(--secondary-color), 0.8)), url('https://images.unsplash.com/photo-1547263955-a07c96d2bcfa?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        .hero-content {
+            text-align: center;
+            color: var(--text-color);
+        }
+        .hero-title {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        .hero-subtitle {
+            font-size: 1.5rem;
+            max-width: 600px;
+            line-height: 1.8;
+            margin: 0 auto;
+        }
+        .about-section, .services-section, .testimonials-section, .contact-section {
+            padding: 4rem 1.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .section-title {
+            font-size: 3rem;
+            text-align: center;
+            color: var(--primary-color);
+            margin-bottom: 2rem;
+        }
+        .services-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+        .service-card {
+            background-color: var(--text-color);
+            color: var(--bg-color);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            margin: 1rem;
+            width: calc(33% - 2rem);
+        }
+        .service-card:hover {
+            transform: translateY(-5px);
+            transition: all 0.3s ease;
+        }
+        .service-icon {
+            font-size: 4rem;
+            padding: 2rem;
+            background-color: var(--accent-color);
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            color: var(--bg-color);
+        }
+        .service-card p {
+            padding: 2rem;
+            text-align: center;
+            line-height: 1.5;
+        }
+        .testimonial-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 3rem;
+        }
+        .testimonial-box {
+            background-color: var(--text-color);
+            color: var(--bg-color);
+            border-radius: 10px;
+            padding: 2rem;
+            width: calc(45% - 3rem);
+            position: relative;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        .testimonial-box::after {
+            content: '';
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            margin-left: -20px;
+            border-width: 20px;
+            border-style: solid;
+            border-color: var(--text-color) transparent transparent transparent;
+        }
+        .testimonial-content {
+            margin-bottom: 1rem;
+        }
+        .testimonial-author {
+            text-align: right;
+            font-weight: bold;
+        }
+        .rating {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 2rem;
+        }
+        .star {
+            color: var(--secondary-color);
+        }
+        .contact-details {
+            background-color: var(--primary-color);
+            color: var(--bg-color);
+            padding: 3rem 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+        }
+        footer {
+            background-color: var(--secondary-color);
+            color: var(--text-color);
+            padding: 2rem 1.5rem;
+            text-align: center;
+        }
+
+        @media (max-width: 992px) {
+            .service-card {
+                width: calc(48% - 2rem);
+            }
+            .testimonial-box {
+                width: calc(100% - 3rem);
+            }
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            .hero-subtitle {
+                font-size: 1.25rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            .service-card, .testimonial-box {
+                width: 100%;
+            }
+            header, .hero-section {
+                padding: 1rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            nav a, button {
+                width: 100%;
+                margin-bottom: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<header>
+    <div class="nav-container">
+        <div class="logo">Torumehed24</div>
+        <nav>
+            <ul>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#testimonials">Testimonials</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+<section class="hero-section">
+    <div class="hero-content">
+        <h1 class="hero-title">Torumehed24 - Ummistuste likvideerimine</h1>
+        <p class="hero-subtitle">Your reliable partner in plumbing and construction solutions.</p>
+    </div>
+</section>
+<section id="about" class="about-section">
+    <h2 class="section-title">About Us</h2>
+    <p>At Torumehed24, we specialize in providing top-notch services including plumbing and general contracting. With 5-star ratings from our satisfied customers, you can trust us to deliver professional, efficient, and courteous service. From quick water connections to full-scale construction projects, we've got you covered.</p>
+</section>
+<section id="services" class="services-section">
+    <h2 class="section-title">Our Services</h2>
+    <div class="services-container">
+        <div class="service-card">
+            <div class="service-icon">&#128064;</div>
+            <p>Torumees - Reliable plumbing services to keep your home and business running smoothly.</p>
+        </div>
+        <div class="service-card">
+            <div class="service-icon">&#128399;</div>
+            <p>Torutööd - Skilled construction work from initial planning to final touches.</p>
+        </div>
+        <div class="service-card">
+            <div class="service-icon">&#9742;</div>
+            <p>Toruabi - Quality plumbing parts and materials sourced for your needs.</p>
+        </div>
+    </div>
+</section>
+<section id="testimonials" class="testimonials-section">
+    <h2 class="section-title">Testimonials</h2>
+    <div class="testimonial-container">
+        <div class="testimonial-box">
+            <div class="testimonial-content">
+                "Very good service. Professional, efficient and good attitude. I’m very satisfied."
+            </div>
+            <p class="testimonial-author">- Tingting Jia (5/5)</p>
+        </div>
+        <div class="testimonial-box">
+            <div class="testimonial-content">
+                "He went and bought everything himself, came and looked at it, went and bought materials, and did everything quickly and efficiently. I highly recommend him!"
+            </div>
+            <p class="testimonial-author">- Pavel Po (5/5)</p>
+        </div>
+        <div class="testimonial-box">
+            <div class="testimonial-content">
+                "Complete excellence. Came to our rescue late at night and solved a big problem for us very quickly."
+            </div>
+            <p class="testimonial-author">- Kati A. (5/5)</p>
+        </div>
+        <div class="testimonial-box">
+            <div class="testimonial-content">
+                "Very prompt and helpful! I recommend!"
+            </div>
+            <p class="testimonial-author">- Geko Trans (5/5)</p>
+        </div>
+        <div class="testimonial-box">
+            <div class="testimonial-content">
+                "They arrived and did the job quickly. I recommend them to everyone!!"
+            </div>
+            <p class="testimonial-author">- Konstantin arretos (5/5)</p>
+        </div>
+    </div>
+</section>
+<section id="contact" class="contact-section">
+    <h2 class="section-title">Contact Us</h2>
+    <div class="contact-details">
+        <p><strong>Address:</strong> Astangu 28-2, 13519 Tallinn, Estonia</p>
+        <p><strong>Phone:</strong> <a href="tel:+37253445533">+372 5344 5533</a></p>
+    </div>
+</section>
+<footer>
+    <p>&copy; 2024 Torumehed24. All rights reserved.</p>
+</footer>
+
+<script>
+    const sections = document.querySelectorAll('section[id]');
+
+    function observeSections() {
+        sections.forEach(section => {
+            if (isInViewport(section)) {
+                section.classList.add('fade-in');
+            }
+        });
+    }
+
+    function isInViewport(element) {
+        const rect = element.getBoundingClientRect();
+        return (
+            rect.top >= 0 &&
+            rect.left >= 0 &&
+            rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+            rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+        );
+    }
+
+    window.addEventListener('scroll', observeSections);
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href').substring(1);
+            const targetSection = document.getElementById(targetId);
+            window.scrollTo({
+                top: targetSection.offsetTop,
+                behavior: 'smooth'
+            });
+        });
+    });
+
+    observeSections(); // Initial check in case sections are already in viewport on load
+</script>
+</body>
+</html>
